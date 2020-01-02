@@ -1,6 +1,10 @@
 # ranger-sox
 SoX integration plugin for the [Ranger File Manager](https://github.com/ranger/ranger) making audio conversion easy
 
+# Prerequisites
+
+[SoX](https://www.madskjeldgaard.dk/sox-tutorial-command-line-tape-music-an-introduction/)
+
 # Installation
 Copy `ranger-sox.py` file to ~/.config/ranger/plugins folder and restart ranger.
 
