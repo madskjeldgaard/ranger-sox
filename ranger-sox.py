@@ -187,3 +187,103 @@ class reverse(sox_base):
         command = f"sox '{fn}' '{newfn}' {param}"
 
         return command
+
+
+class channels1(sox_base):
+    """:channels1 <filename>
+
+    Convert to 1 channel
+    """
+
+    def soxcommand(self, fn):
+        suffix = "_1chan"
+
+        newfn = self.filename_with(suffix, fn)
+
+        # The sox operation being used
+        param = "channels 1;"
+
+        # The full command
+        command = f"sox '{fn}' '{newfn}' {param}"
+
+        return command
+
+
+class channels4(sox_base):
+    """:channels4 <filename>
+
+    Convert to 4 channel
+    """
+
+    def soxcommand(self, fn):
+        suffix = "_4chan"
+
+        newfn = self.filename_with(suffix, fn)
+
+        # The sox operation being used
+        param = "channels 4;"
+
+        # The full command
+        command = f"sox '{fn}' '{newfn}' {param}"
+
+        return command
+
+
+class samplerate48k(sox_base):
+    """:samplerate48k <filename>
+
+    Convert to 48khz
+    """
+
+    def soxcommand(self, fn):
+        suffix = "_48khz"
+
+        newfn = self.filename_with(suffix, fn)
+
+        # The sox operation being used
+        param = "rate 48k;"
+
+        # The full command
+        command = f"sox '{fn}' '{newfn}' {param}"
+
+        return command
+
+
+class bitrate16(sox_base):
+    """:bitrate16 <filename>
+
+    Convert to 16 bit bitrate
+    """
+
+    def soxcommand(self, fn):
+        suffix = "_16bit"
+
+        newfn = self.filename_with(suffix, fn)
+
+        # The sox operation being used
+        param = "-b 16;"
+
+        # The full command
+        command = f"sox '{fn}' {param} '{newfn}' "
+
+        return command
+
+
+class bitrate24(sox_base):
+    """:bitrate24 <filename>
+
+    Convert to 24 bit bitrate
+    """
+
+    def soxcommand(self, fn):
+        suffix = "_24bit"
+
+        newfn = self.filename_with(suffix, fn)
+
+        # The sox operation being used
+        param = "-b 24;"
+
+        # The full command
+        command = f"sox '{fn}' {param} '{newfn}' "
+
+        return command
