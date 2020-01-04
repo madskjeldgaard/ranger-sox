@@ -39,11 +39,17 @@ class sox_base(Command):
 
         return command
 
-    def filename_with(self, tag, filename):
+    def filename_with(self, tag, filename, newsuffix=""):
         from pathlib import Path
 
         infile = Path(filename)
-        fn = Path(infile.stem + tag + infile.suffix)
+
+        if newsuffix is "":
+            suf = infile.suffix
+        else:
+            suf = newsuffix
+
+        fn = Path(infile.stem + tag + suf)
         fn = infile.parent.joinpath(fn)
 
         return fn
@@ -282,6 +288,26 @@ class bitrate24(sox_base):
 
         # The sox operation being used
         param = "-b 24;"
+
+        # The full command
+        command = f"sox '{fn}' {param} '{newfn}' "
+
+        return command
+
+
+class flac(sox_base):
+    """:flac <filename>
+
+    Convert to flac
+    """
+
+    def soxcommand(self, fn):
+        suffix = ""
+
+        newfn = self.filename_with(suffix, fn, ".flac")
+
+        # The sox operation being used
+        param = ""
 
         # The full command
         command = f"sox '{fn}' {param} '{newfn}' "
